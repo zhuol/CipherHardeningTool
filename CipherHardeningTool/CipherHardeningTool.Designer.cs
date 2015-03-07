@@ -39,6 +39,7 @@ namespace CipherHardeningTool
             this.groupKeyExchangesEnabled = new System.Windows.Forms.GroupBox();
             this.checkedListKeyExchangesEnabled = new System.Windows.Forms.CheckedListBox();
             this.groupSSLCipherSuiteOrder = new System.Windows.Forms.GroupBox();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.buttonClearAll = new System.Windows.Forms.Button();
             this.buttonSelectAll = new System.Windows.Forms.Button();
             this.MoveItemDown = new System.Windows.Forms.Button();
@@ -54,16 +55,22 @@ namespace CipherHardeningTool
             this.labelUrl = new System.Windows.Forms.Label();
             this.urlForSSLScan = new System.Windows.Forms.TextBox();
             this.labelPoweredBy = new System.Windows.Forms.Label();
+            this.JavaHardening = new System.Windows.Forms.Button();
+            this.JavaGroup = new System.Windows.Forms.GroupBox();
+            this.JavaCipherRollBack = new System.Windows.Forms.Button();
             this.labelCopyright = new System.Windows.Forms.Label();
-            this.menuStripWeakCipherTool = new System.Windows.Forms.MenuStrip();
+            this.RollbackCipher = new System.Windows.Forms.Button();
+            this.ClearCipher = new System.Windows.Forms.Button();
+            this.Run = new System.Windows.Forms.Button();
+            this.BackUp = new System.Windows.Forms.Button();
+            this.IISGroup = new System.Windows.Forms.GroupBox();
             this.templateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bestPracticesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.Run = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.menuStripWeakCipherTool = new System.Windows.Forms.MenuStrip();
             this.linkAbout = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.groupProtocolsEnabled.SuspendLayout();
@@ -72,6 +79,8 @@ namespace CipherHardeningTool
             this.groupKeyExchangesEnabled.SuspendLayout();
             this.groupSSLCipherSuiteOrder.SuspendLayout();
             this.groupSSLScan.SuspendLayout();
+            this.JavaGroup.SuspendLayout();
+            this.IISGroup.SuspendLayout();
             this.menuStripWeakCipherTool.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +98,7 @@ namespace CipherHardeningTool
             // checkedListProtocolsEnabled
             // 
             this.checkedListProtocolsEnabled.CheckOnClick = true;
+            this.checkedListProtocolsEnabled.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.checkedListProtocolsEnabled.FormattingEnabled = true;
             this.checkedListProtocolsEnabled.Items.AddRange(new object[] {
             "SSL 2.0",
@@ -189,6 +199,7 @@ namespace CipherHardeningTool
             // 
             // groupSSLCipherSuiteOrder
             // 
+            this.groupSSLCipherSuiteOrder.Controls.Add(this.progressBar);
             this.groupSSLCipherSuiteOrder.Controls.Add(this.buttonClearAll);
             this.groupSSLCipherSuiteOrder.Controls.Add(this.buttonSelectAll);
             this.groupSSLCipherSuiteOrder.Controls.Add(this.MoveItemDown);
@@ -197,37 +208,46 @@ namespace CipherHardeningTool
             this.groupSSLCipherSuiteOrder.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupSSLCipherSuiteOrder.Location = new System.Drawing.Point(26, 48);
             this.groupSSLCipherSuiteOrder.Name = "groupSSLCipherSuiteOrder";
-            this.groupSSLCipherSuiteOrder.Size = new System.Drawing.Size(509, 535);
+            this.groupSSLCipherSuiteOrder.Size = new System.Drawing.Size(509, 595);
             this.groupSSLCipherSuiteOrder.TabIndex = 4;
             this.groupSSLCipherSuiteOrder.TabStop = false;
             this.groupSSLCipherSuiteOrder.Text = "SSL Cipher Suite Order";
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(20, 557);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(407, 23);
+            this.progressBar.TabIndex = 5;
+            // 
             // buttonClearAll
             // 
-            this.buttonClearAll.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonClearAll.Location = new System.Drawing.Point(433, 437);
+            this.buttonClearAll.BackColor = System.Drawing.Color.White;
+            this.buttonClearAll.ForeColor = System.Drawing.Color.Black;
+            this.buttonClearAll.Location = new System.Drawing.Point(433, 382);
             this.buttonClearAll.Name = "buttonClearAll";
             this.buttonClearAll.Size = new System.Drawing.Size(70, 54);
             this.buttonClearAll.TabIndex = 4;
             this.buttonClearAll.Text = "Clear All";
-            this.buttonClearAll.UseVisualStyleBackColor = true;
+            this.buttonClearAll.UseVisualStyleBackColor = false;
             this.buttonClearAll.Click += new System.EventHandler(this.ButtonClearAllClick);
             // 
             // buttonSelectAll
             // 
-            this.buttonSelectAll.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonSelectAll.Location = new System.Drawing.Point(433, 377);
+            this.buttonSelectAll.BackColor = System.Drawing.Color.White;
+            this.buttonSelectAll.ForeColor = System.Drawing.Color.Black;
+            this.buttonSelectAll.Location = new System.Drawing.Point(433, 322);
             this.buttonSelectAll.Name = "buttonSelectAll";
             this.buttonSelectAll.Size = new System.Drawing.Size(70, 54);
             this.buttonSelectAll.TabIndex = 3;
             this.buttonSelectAll.Text = "Select All";
-            this.buttonSelectAll.UseVisualStyleBackColor = true;
+            this.buttonSelectAll.UseVisualStyleBackColor = false;
             this.buttonSelectAll.Click += new System.EventHandler(this.ButtonSelectAllClick);
             // 
             // MoveItemDown
             // 
             this.MoveItemDown.Image = global::CipherHardeningTool.Properties.Resources.Untitled2;
-            this.MoveItemDown.Location = new System.Drawing.Point(443, 277);
+            this.MoveItemDown.Location = new System.Drawing.Point(443, 222);
             this.MoveItemDown.Name = "MoveItemDown";
             this.MoveItemDown.Size = new System.Drawing.Size(45, 45);
             this.MoveItemDown.TabIndex = 2;
@@ -237,7 +257,7 @@ namespace CipherHardeningTool
             // MoveItemUp
             // 
             this.MoveItemUp.Image = global::CipherHardeningTool.Properties.Resources.Untitled;
-            this.MoveItemUp.Location = new System.Drawing.Point(443, 213);
+            this.MoveItemUp.Location = new System.Drawing.Point(443, 158);
             this.MoveItemUp.Name = "MoveItemUp";
             this.MoveItemUp.Size = new System.Drawing.Size(45, 45);
             this.MoveItemUp.TabIndex = 1;
@@ -251,9 +271,9 @@ namespace CipherHardeningTool
             this.checkedListSSLCipherSuiteOrder.FormattingEnabled = true;
             this.checkedListSSLCipherSuiteOrder.Location = new System.Drawing.Point(20, 22);
             this.checkedListSSLCipherSuiteOrder.Name = "checkedListSSLCipherSuiteOrder";
-            this.checkedListSSLCipherSuiteOrder.Size = new System.Drawing.Size(407, 497);
+            this.checkedListSSLCipherSuiteOrder.Size = new System.Drawing.Size(407, 514);
             this.checkedListSSLCipherSuiteOrder.TabIndex = 0;
-            this.checkedListSSLCipherSuiteOrder.SelectedIndexChanged += new System.EventHandler(this.CheckedListSslCipherSuiteOrderSelectedIndexChanged);
+            this.checkedListSSLCipherSuiteOrder.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckedListSslCipherSuiteOrderItemCheck);
             // 
             // checkedListSSLCipherSuiteOrderForDisable
             // 
@@ -272,7 +292,7 @@ namespace CipherHardeningTool
             this.groupSSLScan.Controls.Add(this.labelUrl);
             this.groupSSLScan.Controls.Add(this.urlForSSLScan);
             this.groupSSLScan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupSSLScan.Location = new System.Drawing.Point(560, 522);
+            this.groupSSLScan.Location = new System.Drawing.Point(560, 629);
             this.groupSSLScan.Name = "groupSSLScan";
             this.groupSSLScan.Size = new System.Drawing.Size(547, 61);
             this.groupSSLScan.TabIndex = 6;
@@ -314,13 +334,14 @@ namespace CipherHardeningTool
             // 
             // SSLScan
             // 
-            this.SSLScan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.SSLScan.BackColor = System.Drawing.Color.White;
+            this.SSLScan.ForeColor = System.Drawing.Color.Black;
             this.SSLScan.Location = new System.Drawing.Point(482, 22);
             this.SSLScan.Name = "SSLScan";
             this.SSLScan.Size = new System.Drawing.Size(48, 26);
             this.SSLScan.TabIndex = 3;
             this.SSLScan.Text = "Scan";
-            this.SSLScan.UseVisualStyleBackColor = true;
+            this.SSLScan.UseVisualStyleBackColor = false;
             this.SSLScan.Click += new System.EventHandler(this.SslScanClick);
             // 
             // labelUrl
@@ -342,31 +363,118 @@ namespace CipherHardeningTool
             // labelPoweredBy
             // 
             this.labelPoweredBy.AutoSize = true;
-            this.labelPoweredBy.Location = new System.Drawing.Point(23, 608);
+            this.labelPoweredBy.Location = new System.Drawing.Point(23, 673);
             this.labelPoweredBy.Name = "labelPoweredBy";
-            this.labelPoweredBy.Size = new System.Drawing.Size(82, 17);
+            this.labelPoweredBy.Size = new System.Drawing.Size(130, 17);
             this.labelPoweredBy.TabIndex = 9;
-            this.labelPoweredBy.Text = "Powered by";
+            this.labelPoweredBy.Text = "Powered by: 2hu01";
+            // 
+            // JavaHardening
+            // 
+            this.JavaHardening.BackColor = System.Drawing.Color.White;
+            this.JavaHardening.ForeColor = System.Drawing.Color.Black;
+            this.JavaHardening.Location = new System.Drawing.Point(16, 29);
+            this.JavaHardening.Name = "JavaHardening";
+            this.JavaHardening.Size = new System.Drawing.Size(100, 40);
+            this.JavaHardening.TabIndex = 17;
+            this.JavaHardening.Text = "Hardening";
+            this.JavaHardening.UseVisualStyleBackColor = false;
+            this.JavaHardening.Click += new System.EventHandler(this.JavaHardeningClick);
+            // 
+            // JavaGroup
+            // 
+            this.JavaGroup.Controls.Add(this.JavaCipherRollBack);
+            this.JavaGroup.Controls.Add(this.JavaHardening);
+            this.JavaGroup.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.JavaGroup.Location = new System.Drawing.Point(560, 532);
+            this.JavaGroup.Name = "JavaGroup";
+            this.JavaGroup.Size = new System.Drawing.Size(260, 82);
+            this.JavaGroup.TabIndex = 18;
+            this.JavaGroup.TabStop = false;
+            this.JavaGroup.Text = "MAG(JAVA)";
+            // 
+            // JavaCipherRollBack
+            // 
+            this.JavaCipherRollBack.BackColor = System.Drawing.Color.White;
+            this.JavaCipherRollBack.ForeColor = System.Drawing.Color.Black;
+            this.JavaCipherRollBack.Location = new System.Drawing.Point(144, 29);
+            this.JavaCipherRollBack.Name = "JavaCipherRollBack";
+            this.JavaCipherRollBack.Size = new System.Drawing.Size(100, 40);
+            this.JavaCipherRollBack.TabIndex = 18;
+            this.JavaCipherRollBack.Text = "Roll Back";
+            this.JavaCipherRollBack.UseVisualStyleBackColor = false;
+            this.JavaCipherRollBack.Click += new System.EventHandler(this.JavaCipherRollBackClick);
             // 
             // labelCopyright
             // 
             this.labelCopyright.AutoSize = true;
-            this.labelCopyright.Location = new System.Drawing.Point(324, 608);
+            this.labelCopyright.Location = new System.Drawing.Point(360, 673);
             this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Size = new System.Drawing.Size(129, 17);
+            this.labelCopyright.Size = new System.Drawing.Size(125, 17);
             this.labelCopyright.TabIndex = 11;
-            this.labelCopyright.Text = "Copyright@ 2013 | ";
+            this.labelCopyright.Text = "Copyright@ 2015 |";
             // 
-            // menuStripWeakCipherTool
+            // RollbackCipher
             // 
-            this.menuStripWeakCipherTool.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.templateToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.menuStripWeakCipherTool.Location = new System.Drawing.Point(0, 0);
-            this.menuStripWeakCipherTool.Name = "menuStripWeakCipherTool";
-            this.menuStripWeakCipherTool.Size = new System.Drawing.Size(1133, 28);
-            this.menuStripWeakCipherTool.TabIndex = 13;
-            this.menuStripWeakCipherTool.Text = "menuStripWeakCipherTool";
+            this.RollbackCipher.BackColor = System.Drawing.Color.White;
+            this.RollbackCipher.ForeColor = System.Drawing.Color.Black;
+            this.RollbackCipher.Location = new System.Drawing.Point(138, 54);
+            this.RollbackCipher.Name = "RollbackCipher";
+            this.RollbackCipher.Size = new System.Drawing.Size(101, 27);
+            this.RollbackCipher.TabIndex = 16;
+            this.RollbackCipher.Text = "Roll Back";
+            this.RollbackCipher.UseVisualStyleBackColor = false;
+            this.RollbackCipher.Click += new System.EventHandler(this.RollbackCipherClick);
+            // 
+            // ClearCipher
+            // 
+            this.ClearCipher.BackColor = System.Drawing.Color.White;
+            this.ClearCipher.ForeColor = System.Drawing.Color.Black;
+            this.ClearCipher.Location = new System.Drawing.Point(24, 54);
+            this.ClearCipher.Name = "ClearCipher";
+            this.ClearCipher.Size = new System.Drawing.Size(101, 27);
+            this.ClearCipher.TabIndex = 15;
+            this.ClearCipher.Text = "Clear";
+            this.ClearCipher.UseVisualStyleBackColor = false;
+            this.ClearCipher.Click += new System.EventHandler(this.ClearCipherClick);
+            // 
+            // Run
+            // 
+            this.Run.BackColor = System.Drawing.Color.White;
+            this.Run.ForeColor = System.Drawing.Color.Black;
+            this.Run.Location = new System.Drawing.Point(24, 21);
+            this.Run.Name = "Run";
+            this.Run.Size = new System.Drawing.Size(101, 27);
+            this.Run.TabIndex = 14;
+            this.Run.Text = "Apply";
+            this.Run.UseVisualStyleBackColor = false;
+            this.Run.Click += new System.EventHandler(this.RunClick);
+            // 
+            // BackUp
+            // 
+            this.BackUp.BackColor = System.Drawing.Color.White;
+            this.BackUp.ForeColor = System.Drawing.Color.Black;
+            this.BackUp.Location = new System.Drawing.Point(138, 22);
+            this.BackUp.Name = "BackUp";
+            this.BackUp.Size = new System.Drawing.Size(101, 27);
+            this.BackUp.TabIndex = 17;
+            this.BackUp.Text = "BackUp";
+            this.BackUp.UseVisualStyleBackColor = false;
+            this.BackUp.Click += new System.EventHandler(this.BackUpClick);
+            // 
+            // IISGroup
+            // 
+            this.IISGroup.Controls.Add(this.BackUp);
+            this.IISGroup.Controls.Add(this.Run);
+            this.IISGroup.Controls.Add(this.ClearCipher);
+            this.IISGroup.Controls.Add(this.RollbackCipher);
+            this.IISGroup.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.IISGroup.Location = new System.Drawing.Point(847, 527);
+            this.IISGroup.Name = "IISGroup";
+            this.IISGroup.Size = new System.Drawing.Size(260, 87);
+            this.IISGroup.TabIndex = 19;
+            this.IISGroup.TabStop = false;
+            this.IISGroup.Text = "IIS(Windows)";
             // 
             // templateToolStripMenuItem
             // 
@@ -414,34 +522,24 @@ namespace CipherHardeningTool
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.AboutToolStripMenuItem1Click);
             // 
-            // Run
+            // menuStripWeakCipherTool
             // 
-            this.Run.Location = new System.Drawing.Point(1025, 598);
-            this.Run.Name = "Run";
-            this.Run.Size = new System.Drawing.Size(82, 37);
-            this.Run.TabIndex = 14;
-            this.Run.Text = "Apply";
-            this.Run.UseVisualStyleBackColor = true;
-            this.Run.Click += new System.EventHandler(this.RunClick);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(459, 608);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(48, 17);
-            this.linkLabel1.TabIndex = 15;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "2hu01";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.menuStripWeakCipherTool.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.templateToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuStripWeakCipherTool.Location = new System.Drawing.Point(0, 0);
+            this.menuStripWeakCipherTool.Name = "menuStripWeakCipherTool";
+            this.menuStripWeakCipherTool.Size = new System.Drawing.Size(1133, 28);
+            this.menuStripWeakCipherTool.TabIndex = 13;
+            this.menuStripWeakCipherTool.Text = "menuStripWeakCipherTool";
             // 
             // linkAbout
             // 
             this.linkAbout.AutoSize = true;
-            this.linkAbout.Location = new System.Drawing.Point(111, 608);
+            this.linkAbout.Location = new System.Drawing.Point(487, 673);
             this.linkAbout.Name = "linkAbout";
             this.linkAbout.Size = new System.Drawing.Size(48, 17);
-            this.linkAbout.TabIndex = 16;
+            this.linkAbout.TabIndex = 22;
             this.linkAbout.TabStop = true;
             this.linkAbout.Text = "2hu01";
             this.linkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAbout_LinkClicked);
@@ -449,12 +547,12 @@ namespace CipherHardeningTool
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(560, 608);
+            this.linkLabel2.Location = new System.Drawing.Point(173, 673);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(242, 17);
-            this.linkLabel2.TabIndex = 17;
+            this.linkLabel2.Size = new System.Drawing.Size(181, 17);
+            this.linkLabel2.TabIndex = 23;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Email Me:zhuozhuozhuol@gmail.com";
+            this.linkLabel2.Text = "zhuozhuozhuol@gmail.com";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // CipherHardeningTool
@@ -462,13 +560,13 @@ namespace CipherHardeningTool
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(217)))));
-            this.ClientSize = new System.Drawing.Size(1133, 644);
+            this.ClientSize = new System.Drawing.Size(1133, 710);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkAbout);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.Run);
+            this.Controls.Add(this.IISGroup);
             this.Controls.Add(this.labelCopyright);
             this.Controls.Add(this.labelPoweredBy);
+            this.Controls.Add(this.JavaGroup);
             this.Controls.Add(this.groupSSLScan);
             this.Controls.Add(this.groupSSLCipherSuiteOrder);
             this.Controls.Add(this.groupKeyExchangesEnabled);
@@ -479,7 +577,7 @@ namespace CipherHardeningTool
             this.MainMenuStrip = this.menuStripWeakCipherTool;
             this.Name = "CipherHardeningTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CipherHardeningTool";
+            this.Text = "CipherHardeningTool - 1.0.0.0";
             this.Load += new System.EventHandler(this.WeakCipherToolLoad);
             this.groupProtocolsEnabled.ResumeLayout(false);
             this.groupCiphersEnabled.ResumeLayout(false);
@@ -488,6 +586,8 @@ namespace CipherHardeningTool
             this.groupSSLCipherSuiteOrder.ResumeLayout(false);
             this.groupSSLScan.ResumeLayout(false);
             this.groupSSLScan.PerformLayout();
+            this.JavaGroup.ResumeLayout(false);
+            this.IISGroup.ResumeLayout(false);
             this.menuStripWeakCipherTool.ResumeLayout(false);
             this.menuStripWeakCipherTool.PerformLayout();
             this.ResumeLayout(false);
@@ -515,7 +615,6 @@ namespace CipherHardeningTool
         private System.Windows.Forms.Label labelPoweredBy;
         private System.Windows.Forms.Button MoveItemDown;
         private System.Windows.Forms.Button MoveItemUp;
-        private System.Windows.Forms.Label labelCopyright;
         private System.Windows.Forms.Label labelPort;
         private System.Windows.Forms.TextBox textBoxPort;
         private System.Windows.Forms.TextBox textBoxFilter;
@@ -642,20 +741,27 @@ namespace CipherHardeningTool
                                                                     "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
                                                                     "TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256",
                                                                     "TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384"};
-
-        private System.Windows.Forms.MenuStrip menuStripWeakCipherTool;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem templateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bestPracticesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
-        private ToolStripMenuItem customerToolStripMenuItem;
-        private Button Run;
         private Button buttonClearAll;
         private Button buttonSelectAll;
+        private ProgressBar progressBar;
+        private Button JavaHardening;
+        public GroupBox JavaGroup;
+        private Button JavaCipherRollBack;
+        private Label labelCopyright;
+        private Button RollbackCipher;
+        private Button ClearCipher;
+        private Button Run;
+        private Button BackUp;
+        private GroupBox IISGroup;
+        private ToolStripMenuItem templateToolStripMenuItem;
+        private ToolStripMenuItem bestPracticesToolStripMenuItem;
+        private ToolStripMenuItem customerToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem helpDocumentToolStripMenuItem;
-        private LinkLabel linkLabel1;
+        private ToolStripMenuItem aboutToolStripMenuItem1;
+        private MenuStrip menuStripWeakCipherTool;
         private LinkLabel linkAbout;
-        private LinkLabel linkLabel2;            
+        private LinkLabel linkLabel2;
     }
 }
 
