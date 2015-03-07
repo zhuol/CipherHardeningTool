@@ -226,6 +226,7 @@ namespace CipherHardeningTool
             // 
             // MoveItemDown
             // 
+            this.MoveItemDown.Image = global::CipherHardeningTool.Properties.Resources.Untitled2;
             this.MoveItemDown.Location = new System.Drawing.Point(443, 277);
             this.MoveItemDown.Name = "MoveItemDown";
             this.MoveItemDown.Size = new System.Drawing.Size(45, 45);
@@ -235,6 +236,7 @@ namespace CipherHardeningTool
             // 
             // MoveItemUp
             // 
+            this.MoveItemUp.Image = global::CipherHardeningTool.Properties.Resources.Untitled;
             this.MoveItemUp.Location = new System.Drawing.Point(443, 213);
             this.MoveItemUp.Name = "MoveItemUp";
             this.MoveItemUp.Size = new System.Drawing.Size(45, 45);
